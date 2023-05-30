@@ -1,0 +1,49 @@
+<map id="no_os_pwm_enable" name="no_os_pwm_enable">
+<area shape="rect" id="Node000001" title="Enable PWM signal generation." alt="" coords="819,181,969,207"/>
+<area shape="rect" id="Node000002" href="$ad463x_8c.html#ac1cc8e1c72706ef210ea4d3e746a7c0c" title="Read from device. Enter register mode to read/write registers." alt="" coords="561,7,756,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="877,170,835,107,805,73,769,46,746,35,748,30,772,41,808,69,839,103,882,168"/>
+<area shape="rect" id="Node000006" href="$ad4692_8c.html#a6bdbf34077fe175a1837ca3a2873a028" title=" " alt="" coords="565,56,753,81"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="870,173,826,133,799,113,770,96,736,84,738,79,772,92,802,109,829,129,873,169"/>
+<area shape="rect" id="Node000009" href="$ad469x_8c.html#abda6b9d65e0b6e2a82390a09a8f08eb8" title="Exit conversion mode. Enter register mode to read/write registers." alt="" coords="547,107,771,132"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="853,178,770,146,727,135,728,129,771,141,855,173"/>
+<area shape="rect" id="Node000010" href="$ad469x_8c.html#a92cd606b28fd68b3a2c52717552818df" title="Read from device. Enter register mode to read/write registers." alt="" coords="587,156,730,181"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="805,187,730,179,731,174,805,182"/>
+<area shape="rect" id="Node000014" href="$adaq7980_8c.html#a0db55892937414f2d5dc84a14fd89677" title=" " alt="" coords="594,205,723,231"/>
+<area shape="poly" id="edge14_Node000001_Node000014" title=" " alt="" coords="805,206,724,214,723,209,805,200"/>
+<area shape="rect" id="Node000016" href="$max25603_8c.html#ac9b182a9ed8bf3625d0846b4bd7533b2" title="MAX25603 set and configure BEAM PWM dimming." alt="" coords="577,256,740,281"/>
+<area shape="poly" id="edge16_Node000001_Node000016" title=" " alt="" coords="852,215,771,245,720,258,719,253,770,239,850,210"/>
+<area shape="rect" id="Node000019" href="$max25603_8c.html#a505e7e1f8ea38019b345f30458c4cd68" title="MAX25603 set and configure ENABLE PWM dimming." alt="" coords="574,307,743,332"/>
+<area shape="poly" id="edge20_Node000001_Node000019" title=" " alt="" coords="873,219,829,258,772,295,734,309,732,304,769,290,825,254,869,215"/>
+<area shape="rect" id="Node000020" href="$stm32__spi_8c.html#ab6cca445715be6bcb7bf563bf8388829" title="Configure and start a series of transfers using DMA." alt="" coords="571,401,747,441"/>
+<area shape="poly" id="edge23_Node000001_Node000020" title=" " alt="" coords="878,220,833,279,772,345,733,377,695,403,692,398,730,373,769,341,829,276,874,216"/>
+<area shape="rect" id="Node000003" href="$ad463x_8c.html#a354bac86baa990ef631a0316640aa6ef" title="Read from device. Enter register mode to read/write registers." alt="" coords="336,5,479,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="548,21,479,21,479,16,548,16"/>
+<area shape="rect" id="Node000004" href="$ad463x__fmcz_2src_2examples_2basic__example_2basic__example_8c.html#a72943dc9011d36293cb05ca5d7cb6899" title="basic example main execution." alt="" coords="108,5,268,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="322,21,268,21,268,15,322,15"/>
+<area shape="rect" id="Node000005" href="$ad463x__fmcz_2src_2platform_2stm32_2main_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title="Main function execution for STM32 platform." alt="" coords="5,5,60,31"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="94,21,60,21,60,15,94,15"/>
+<area shape="rect" id="Node000007" href="$ad4692_8c.html#af81c2d455280fe5c08a0b85e42872f03" title=" " alt="" coords="347,55,467,80"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="551,71,468,70,468,65,551,65"/>
+<area shape="rect" id="Node000008" href="$ad4692__ardz_2src_2examples_2basic_2basic__example_8c.html#ac25cbf8ae523e89cb0617e68c98bc697" title="Basic example main executiont." alt="" coords="129,55,247,80"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="333,70,247,70,247,65,333,65"/>
+<area shape="rect" id="Node000011" href="$ad469x_8c.html#a947efb0cc9183e2dc0d9aeb3d697601b" title="Read from device when converter has the channel sequencer activated. Enter register mode to read/writ..." alt="" coords="321,156,493,181"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="573,171,494,171,494,166,573,166"/>
+<area shape="rect" id="Node000012" href="$ad469x__evb_2src_2examples_2basic__example_2basic__example_8c.html#a72943dc9011d36293cb05ca5d7cb6899" title="basic example main execution." alt="" coords="108,105,268,131"/>
+<area shape="poly" id="edge13_Node000010_Node000012" title=" " alt="" coords="574,157,498,146,268,125,269,120,499,141,574,151"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="338,155,243,133,244,128,339,150"/>
+<area shape="rect" id="Node000013" href="$ad469x__evb_2src_2examples_2iio__example_2iio__example_8c.html#a7d58fb707a91d4615d3bf949fabaa1e2" title="IIO example main execution." alt="" coords="117,156,259,181"/>
+<area shape="poly" id="edge12_Node000011_Node000013" title=" " alt="" coords="307,171,259,171,259,166,307,166"/>
+<area shape="rect" id="Node000015" href="$adaq7980__sdz_8c.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="380,205,435,231"/>
+<area shape="poly" id="edge15_Node000014_Node000015" title=" " alt="" coords="580,221,435,221,435,215,580,215"/>
+<area shape="rect" id="Node000017" href="$max25603_2src_2examples_2basic_2basic__example_8c.html#a72943dc9011d36293cb05ca5d7cb6899" title="basic example main execution." alt="" coords="108,307,268,332"/>
+<area shape="poly" id="edge17_Node000016_Node000017" title=" " alt="" coords="564,275,446,283,316,297,246,309,245,304,316,291,445,278,563,270"/>
+<area shape="rect" id="Node000018" href="$max25603_8c.html#aeacd01230e74bebbc2311031c4d8bf42" title="MAX25603 descriptor initialization function." alt="" coords="348,307,467,332"/>
+<area shape="poly" id="edge18_Node000016_Node000018" title=" " alt="" coords="582,287,467,310,466,305,581,282"/>
+<area shape="poly" id="edge19_Node000018_Node000017" title=" " alt="" coords="334,322,268,322,268,317,334,317"/>
+<area shape="poly" id="edge21_Node000019_Node000017" title=" " alt="" coords="575,337,499,346,407,351,316,346,244,335,245,329,316,341,407,346,498,341,575,332"/>
+<area shape="poly" id="edge22_Node000019_Node000018" title=" " alt="" coords="560,322,467,322,467,317,560,317"/>
+<area shape="rect" id="Node000021" href="$stm32__spi_8c.html#a523da63f0a8b55feff12987dd565df18" title="Configure and start a series of transfers using DMA. Wait for the completion before returning." alt="" coords="316,408,499,433"/>
+<area shape="poly" id="edge24_Node000020_Node000021" title=" " alt="" coords="557,423,499,423,499,418,557,418"/>
+<area shape="rect" id="Node000022" href="$stm32__spi_8c.html#ac1bb3dc339d72e8eeb06ff5cdba6ce5a" title="Configure and start a series of transfers using DMA. Don&#39;t Wait for the completion before returning." alt="" coords="334,458,481,498"/>
+<area shape="poly" id="edge25_Node000020_Node000022" title=" " alt="" coords="558,446,481,464,480,459,557,441"/>
+</map>

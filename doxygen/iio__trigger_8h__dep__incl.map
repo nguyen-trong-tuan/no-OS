@@ -1,0 +1,50 @@
+<map id="iio/iio_trigger.h" name="iio/iio_trigger.h">
+<area shape="rect" id="Node000001" title="Header file for iio_trigger." alt="" coords="1183,5,1301,31"/>
+<area shape="rect" id="Node000002" href="$iio__adxl355__trig_8c.html" title="Implementation of adxl355 iio trigger." alt="" coords="99,93,260,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1169,24,716,42,463,59,359,70,280,81,228,96,226,91,279,76,358,64,463,54,715,37,1169,19"/>
+<area shape="rect" id="Node000003" href="$iio__ad74413r_8h.html" title="Header file of the IIO AD74413r Driver." alt="" coords="335,93,522,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1169,23,1048,27,889,36,712,53,535,81,481,96,479,91,533,76,711,48,889,31,1047,21,1169,17"/>
+<area shape="rect" id="Node000006" href="$ad74413r_2src_2examples_2iio__trigger__example_2iio__trigger__example_8c.html" title="Implementation of IIO trigger example for AD74413R project." alt="" coords="5,203,236,258"/>
+<area shape="poly" id="edge23_Node000001_Node000006" title=" " alt="" coords="1169,23,961,28,697,39,458,56,373,68,325,81,307,95,298,112,289,131,273,150,230,181,184,206,182,201,227,177,270,146,285,128,293,110,303,92,322,76,372,62,457,51,697,34,961,23,1169,18"/>
+<area shape="rect" id="Node000010" href="$iio__ad7091r8__trig_8c.html" title="Implementation of iio_ad7091r8_trig.c." alt="" coords="547,93,705,133"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="1169,25,964,41,841,58,719,81,672,96,670,91,717,76,840,52,964,36,1168,20"/>
+<area shape="rect" id="Node000011" href="$iio__adc__demo__trig_8c.html" title="Implementation of iio_adc_demo_trig.c." alt="" coords="730,93,895,133"/>
+<area shape="poly" id="edge12_Node000001_Node000011" title=" " alt="" coords="1169,31,1046,51,908,81,862,96,860,91,907,76,1045,46,1168,26"/>
+<area shape="rect" id="Node000012" href="$iio__dac__demo__trig_8c.html" title="Implementation of iio_dac_demo_trig.c." alt="" coords="919,93,1085,133"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="1201,38,1051,96,1049,91,1199,33"/>
+<area shape="rect" id="Node000013" href="$iio__adxrs290_8h.html" title="Implementation of ADXRS290 iio." alt="" coords="1160,93,1324,133"/>
+<area shape="poly" id="edge14_Node000001_Node000013" title=" " alt="" coords="1245,44,1245,93,1239,93,1239,44"/>
+<area shape="rect" id="Node000015" href="$adxrs290-pmdz_2src_2examples_2iio__timer__trigger__example_2iio__timer__trigger__example_8c.html" title="Implementation of IIO trigger example for iio_demo project." alt="" coords="944,196,1143,265"/>
+<area shape="poly" id="edge24_Node000001_Node000015" title=" " alt="" coords="1208,40,1179,58,1151,80,1068,197,1064,194,1147,77,1176,54,1205,35"/>
+<area shape="rect" id="Node000016" href="$adxrs290-pmdz_2src_2examples_2iio__trigger__example_2iio__trigger__example_8c.html" title="Implementation of IIO trigger example for eval&#45;adxrs290&#45;pmdz project." alt="" coords="1389,203,1620,258"/>
+<area shape="poly" id="edge25_Node000001_Node000016" title=" " alt="" coords="1279,35,1309,54,1338,77,1355,95,1365,112,1375,128,1391,146,1426,176,1462,201,1459,206,1423,180,1387,150,1371,131,1361,114,1351,98,1335,81,1306,58,1276,40"/>
+<area shape="rect" id="Node000017" href="$iio__adxrs290__trig_8c.html" title="Implementation of adxrs290 iio trigger." alt="" coords="1400,93,1564,133"/>
+<area shape="poly" id="edge18_Node000001_Node000017" title=" " alt="" coords="1285,33,1435,91,1433,96,1283,38"/>
+<area shape="rect" id="Node000018" href="$iio__adis_8c.html" title="Implementation of iio_adis.c." alt="" coords="1588,101,1749,126"/>
+<area shape="poly" id="edge19_Node000001_Node000018" title=" " alt="" coords="1316,26,1439,46,1577,76,1642,98,1640,103,1576,81,1438,51,1315,31"/>
+<area shape="rect" id="Node000019" href="$iio__adis__trig_8c.html" title="Implementation of adis iio trigger." alt="" coords="1773,93,1924,133"/>
+<area shape="poly" id="edge20_Node000001_Node000019" title=" " alt="" coords="1315,19,1518,35,1641,52,1763,76,1807,91,1805,96,1761,81,1640,57,1518,40,1315,25"/>
+<area shape="rect" id="Node000020" href="$iio__trigger_8c.html" title="Implementation of generic iio trigger." alt="" coords="1948,101,2067,126"/>
+<area shape="poly" id="edge21_Node000001_Node000020" title=" " alt="" coords="1315,20,1640,39,1813,55,1883,65,1937,76,1989,98,1987,103,1936,81,1883,70,1812,60,1640,44,1315,25"/>
+<area shape="rect" id="Node000021" href="$ad4692__ardz_2src_2examples_2iio__trigger_2iio__trigger__example_8c.html" title="Implementation of IIO trigger example for AD4692 project." alt="" coords="2091,86,2273,141"/>
+<area shape="poly" id="edge22_Node000001_Node000021" title=" " alt="" coords="1315,16,1457,18,1648,26,1863,44,1973,58,2080,76,2110,83,2108,89,2079,81,1972,63,1863,49,1648,31,1457,23,1315,21"/>
+<area shape="rect" id="Node000022" href="$eval-adxl355-pmdz_2src_2examples_2iio__trigger__example_2iio__trigger__example_8c.html" title="Implementation of IIO trigger example for eval&#45;adxl355&#45;pmdz project." alt="" coords="2297,79,2504,148"/>
+<area shape="poly" id="edge26_Node000001_Node000022" title=" " alt="" coords="1315,19,1808,38,2084,54,2199,65,2286,76,2298,78,2297,83,2286,81,2199,70,2084,60,1807,43,1315,24"/>
+<area shape="rect" id="Node000004" href="$iio__ad74413r_8c.html" title="Source file of the IIO AD74413r Driver." alt="" coords="311,211,498,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="425,147,411,211,406,210,419,146"/>
+<area shape="rect" id="Node000005" href="$ad74413r_2src_2examples_2iio__example_2iio__example_8c.html" title="Implementation of IIO example for AD74413R project." alt="" coords="523,203,697,258"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="471,138,570,201,567,205,468,143"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="366,141,192,206,190,201,364,136"/>
+<area shape="rect" id="Node000007" href="$swiot_8c.html" title="Source file for the swiot IIO driver." alt="" coords="777,313,925,353"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="495,135,535,145,569,150,613,152,717,154,769,157,816,164,855,175,883,194,891,208,896,224,893,257,881,289,867,315,862,312,876,286,887,256,890,225,887,210,879,198,853,180,815,169,768,162,717,159,613,157,568,155,533,151,494,140"/>
+<area shape="rect" id="Node000008" href="$swiot_8h.html" title="Header file for the swiot IIO device." alt="" coords="721,211,869,251"/>
+<area shape="poly" id="edge7_Node000003_Node000008" title=" " alt="" coords="500,135,535,145,622,169,709,193,750,208,748,213,708,199,621,174,533,151,499,140"/>
+<area shape="rect" id="Node000009" href="$swiot__fw_8c.html" title="Main project file for the swiot1l project." alt="" coords="431,313,579,353"/>
+<area shape="poly" id="edge10_Node000003_Node000009" title=" " alt="" coords="365,141,329,165,314,180,302,197,293,216,290,231,292,247,301,264,328,290,360,308,395,319,431,326,430,331,394,325,358,313,324,294,297,267,287,249,284,231,288,214,297,195,310,177,326,161,362,137"/>
+<area shape="poly" id="edge8_Node000008_Node000007" title=" " alt="" coords="815,261,843,312,839,315,810,264"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="736,258,710,268,566,316,564,311,708,263,734,253"/>
+<area shape="rect" id="Node000014" href="$adxrs290-pmdz_2src_2examples_2iio__example_2iio__example_8c.html" title="Implementation of IIO example for eval&#45;adxrs290&#45;pmdz project." alt="" coords="1167,203,1365,258"/>
+<area shape="poly" id="edge15_Node000013_Node000014" title=" " alt="" coords="1251,146,1263,203,1258,204,1246,147"/>
+<area shape="poly" id="edge16_Node000013_Node000015" title=" " alt="" coords="1199,142,1103,198,1100,194,1197,138"/>
+<area shape="poly" id="edge17_Node000013_Node000016" title=" " alt="" coords="1298,136,1446,201,1444,206,1296,141"/>
+</map>

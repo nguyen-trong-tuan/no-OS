@@ -1,0 +1,9 @@
+<map id="tmc5240_reg_update" name="tmc5240_reg_update">
+<area shape="rect" id="Node000001" title="Read&#45;modify&#45;write a TMC5240 register." alt="" coords="401,31,560,56"/>
+<area shape="rect" id="Node000002" href="$tmc5240_8c.html#aee47c5f3e6fae0b1aa0c16fe53c1a353" title="Initialize the TMC5240 device." alt="" coords="215,5,322,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="387,35,322,27,323,22,387,30"/>
+<area shape="rect" id="Node000004" href="$tmc5240_8c.html#a96fdf53cd6e497c24cceb4efc19d0caa" title="Set the shaft direction for the TMC5240 device." alt="" coords="184,55,353,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="388,57,354,60,353,55,387,51"/>
+<area shape="rect" id="Node000003" href="$iio__tmc5240_8c.html#a34eeb20fee898c60e8d5e29cd2b6e30d" title="Initializes the tmc5240 IIO driver." alt="" coords="5,5,136,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="202,21,136,21,136,15,202,15"/>
+</map>
