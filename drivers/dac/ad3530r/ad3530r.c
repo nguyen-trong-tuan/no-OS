@@ -2,7 +2,7 @@
  *   @file   ad3530r.c
  *   @author Sai Kiran Gudla (Saikiran.Gudla@analog.com)
 ********************************************************************************
- * Copyright (c) 2025 Analog Devices, Inc.
+ * Copyright (c) 2025-26 Analog Devices, Inc.
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *
@@ -46,6 +46,18 @@
 #define AD3530R_CRC_BUFF_LEN(x)             (x) ? 3 : 4
 #define AD3530R_CRC_INDEX(x)                AD3530R_ADDR_INDEX(x) + 2
 
+/**
+ * @enum reg_set_offset
+ * @brief AD353xr offset for register base addresses
+ */
+enum reg_set_offset {
+	AD3530R_31R_ID_NO_OFFSET = (uint32_t)0x0000,
+	AD3532R_ID_SET_1_OFFSET = (uint32_t)0x1000,
+	AD3532R_ID_SET_2_OFFSET = (uint32_t)0x3000
+};
+
+static enum reg_set_offset reg_offset[] = { AD3530R_31R_ID_NO_OFFSET, AD3530R_31R_ID_NO_OFFSET};
+
 static uint8_t num_of_reg_sets = 1;
 static uint8_t num_of_chans = AD3530R_NUM_CH;
 
@@ -79,7 +91,7 @@ uint32_t get_reg_addr(uint32_t addr, enum ad3530r_id chip_id,
 		if (ch_sel)
 			return -EINVAL;
 
-		if (AD3530R_ADDR(addr) > AD3530R_REG_ADDR_MAX)
+		if (AD3530R_ADDR(addr) > AD3531R_REG_ADDR_MAX)
 			return -EINVAL;
 
 		if (AD3530R_ADDR(addr) >= AD3530R_ADDR(AD3530R_REG_ADDR_MULTI_DAC_CH)
@@ -87,10 +99,17 @@ uint32_t get_reg_addr(uint32_t addr, enum ad3530r_id chip_id,
 			addr -= AD3531R_CH_REG_OFFSET;
 		break;
 
+	case AD3532R_ID:
+		if (AD3530R_ADDR(addr) > AD3532R_REG_ADDR_MAX)
+			return -EINVAL;
+
+		break;
+
 	default:
-		return -EINVAL;
+		break;
 	}
 
+	addr |= reg_offset[ch_sel];
 	return addr;
 }
 
@@ -103,50 +122,54 @@ uint32_t get_reg_addr(uint32_t addr, enum ad3530r_id chip_id,
 int ad3530r_update_interface_cfg(struct ad3530r_desc *desc,
 				 struct ad3530r_transfer_config *cfg)
 {
-	int ret ;
+	int ret;
+	uint8_t i;
 
 	if (!desc || !cfg)
 		return -EINVAL;
 
-	ret = ad3530r_spi_write_mask(desc,
-				     AD3530R_REG_ADDR_INTERFACE_CONFIG_A,
-				     AD3530R_MASK_ADDR_ASCENSION,
-				     cfg->addr_asc);
-	if (ret)
-		return ret;
+	/* Configure interface for all register sets (RS1 and RS2 for AD3532R) */
+	for (i = 0; i < num_of_reg_sets; i++) {
+		ret = ad3530r_spi_write_mask(desc,
+					     AD3530R_REG_ADDR_INTERFACE_CONFIG_A | reg_offset[i],
+					     AD3530R_MASK_ADDR_ASCENSION,
+					     cfg->addr_asc);
+		if (ret)
+			return ret;
+
+		ret = ad3530r_spi_write_mask(desc,
+					     AD3530R_REG_ADDR_INTERFACE_CONFIG_B | reg_offset[i],
+					     AD3530R_MASK_SHORT_INSTRUCTION,
+					     cfg->short_instr);
+		if (ret)
+			return ret;
+
+		ret = ad3530r_spi_write_mask(desc,
+					     AD3530R_REG_ADDR_INTERFACE_CONFIG_B | reg_offset[i],
+					     AD3530R_MASK_SINGLE_INST,
+					     cfg->single_instr);
+		if (ret)
+			return ret;
+
+		ret = ad3530r_spi_write_mask(desc,
+					     AD3530R_REG_ADDR_TRANSFER_REGISTER | reg_offset[i],
+					     AD3530R_MASK_STREAM_LENGTH_KEEP_VALUE,
+					     cfg->stream_length_keep_value);
+		if (ret)
+			return ret;
+
+		ret = ad3530r_spi_write_mask(desc,
+					     AD3530R_REG_ADDR_STREAM_MODE | reg_offset[i],
+					     AD3530R_MASK_LENGTH,
+					     cfg->stream_mode_length);
+		if (ret)
+			return ret;
+	}
+
 	desc->spi_cfg.addr_asc = cfg->addr_asc;
-
-	ret = ad3530r_spi_write_mask(desc,
-				     AD3530R_REG_ADDR_INTERFACE_CONFIG_B,
-				     AD3530R_MASK_SHORT_INSTRUCTION,
-				     cfg->short_instr);
-	if (ret)
-		return ret;
 	desc->spi_cfg.short_instr = cfg->short_instr;
-
-	ret = ad3530r_spi_write_mask(desc,
-				     AD3530R_REG_ADDR_INTERFACE_CONFIG_B,
-				     AD3530R_MASK_SINGLE_INST,
-				     cfg->single_instr);
-	if (ret)
-		return ret;
 	desc->spi_cfg.single_instr = cfg->single_instr;
-
-	ret = ad3530r_spi_write_mask(desc,
-				     AD3530R_REG_ADDR_TRANSFER_REGISTER,
-				     AD3530R_MASK_STREAM_LENGTH_KEEP_VALUE,
-				     cfg->stream_length_keep_value);
-	if (ret)
-		return ret;
-	desc->spi_cfg.stream_length_keep_value =
-		cfg->stream_length_keep_value;
-
-	ret = ad3530r_spi_write_mask(desc,
-				     AD3530R_REG_ADDR_STREAM_MODE,
-				     AD3530R_MASK_LENGTH,
-				     cfg->stream_mode_length);
-	if (ret)
-		return ret;
+	desc->spi_cfg.stream_length_keep_value = cfg->stream_length_keep_value;
 	desc->spi_cfg.stream_mode_length = cfg->stream_mode_length;
 
 	return 0;
@@ -170,7 +193,7 @@ static int ad3530r_transfer_with_crc(struct ad3530r_desc *desc,
 	uint8_t addr[2];
 	bool short_instr;
 
-	if (!desc || !data)
+	if (!desc || !data || !data->spi_cfg)
 		return -EINVAL;
 
 	/* Currently streaming mode is not supported with CRC */
@@ -263,12 +286,16 @@ static int ad3530r_transfer(struct ad3530r_desc *desc,
 {
 	struct no_os_spi_msg msgs[2] = { 0 };
 	uint8_t instr[2];
+	int ret;
 
-	if (!desc || !data)
+	if (!desc || !data || !data->spi_cfg)
 		return -EINVAL;
 
-	if (data->spi_cfg)
-		ad3530r_update_interface_cfg(desc, data->spi_cfg);
+	if (data->spi_cfg) {
+		ret = ad3530r_update_interface_cfg(desc, data->spi_cfg);
+		if (ret)
+			return ret;
+	}
 
 	if (data->spi_cfg->short_instr) {
 		instr[0] = data->is_read ? data->addr | AD3530R_READ_BIT : data->addr &
@@ -377,7 +404,7 @@ int ad3530r_multiple_reg_write(struct ad3530r_desc *desc,
 	struct ad3530r_transfer_data msg = { 0 };
 	uint8_t reg_len;
 
-	if (!desc || !buff || (AD3530R_ADDR(start_addr) > AD3530R_REG_ADDR_MAX))
+	if (!desc || !buff || (AD3530R_ADDR(start_addr) > AD3532R_REG_ADDR_MAX))
 		return -EINVAL;
 
 	/* Get the register length */
@@ -603,6 +630,9 @@ int ad3530r_set_operating_mode(struct ad3530r_desc *desc, uint8_t chn_num,
 	int ret;
 	uint32_t reg_addr;
 
+	if (chn_num >= AD353XR_MAX_NUM_CH)
+		return -EINVAL;
+
 	reg_addr = get_reg_addr(AD3530R_REG_ADDR_OPERATING_MODE_CHN(chn_num),
 				desc->chip_id, AD3530R_CH_GRP(chn_num));
 
@@ -622,14 +652,16 @@ int ad3530r_set_operating_mode(struct ad3530r_desc *desc, uint8_t chn_num,
  * Set output range for all channels.
  * @param desc - The device structure.
  * @param range_sel - Output range to be selected.
+* @param chan_sel - Channel group selection.
+ * 		  Available options: CH_0_TO_7, CH_8_TO_15
  * @return 0 in case of success, negative error code otherwise.
  */
 int ad3530r_set_output_range(struct ad3530r_desc *desc,
-			     enum ad3530r_ch_output_range range_sel)
+			     enum ad3530r_ch_output_range range_sel, enum ad3530r_ch_sel chan_sel)
 {
 	int ret;
 	uint32_t reg_addr = get_reg_addr(AD3530R_REG_ADDR_OUTPUT_CONTROL_0,
-					 desc->chip_id, 0);
+					 desc->chip_id, chan_sel);
 
 	ret = ad3530r_spi_write_mask(desc,
 				     reg_addr,
@@ -667,6 +699,55 @@ int ad3530r_set_crc_enable(struct ad3530r_desc *desc, bool en_di)
 	desc->crc_en = en_di;
 
 	return 0;
+}
+
+/**
+ * Set Mux out group select from the two groups for Ad3532R
+ * @param desc - The device structure.
+ * @param grp_sel - Mux output group to be selected.
+ * @return 0 in case of success, negative error code otherwise.
+ * @note This function is only applicable for AD3532R.
+ * 		 For AD3530R and AD3531R, it will return error code.
+ */
+int ad3532r_set_mux_out_grp_select(struct ad3530r_desc* desc,
+				   enum ad3532r_mux_out_grp_select grp_sel)
+{
+	uint16_t val = 0;
+	int ret = 0;
+	uint32_t reg_addr;
+
+	if (desc->chip_id != AD3532R_ID)
+		return -EINVAL;
+
+	/* Clear both registers */
+	ret |= ad3530r_spi_write_mask(desc, AD3532R_REG_ADDR_MUX_OUT_GROUP_SELECT,
+				      AD3532R_MASK_MUX_GRP_SELECT, 0);
+
+	ret |= ad3530r_spi_write_mask(desc, AD3532R_REG_ADDR_MUX_OUT_GROUP_SELECT_SET2,
+				      AD3532R_MASK_MUX_GRP_SELECT, 0);
+
+	if (ret)
+		return ret;
+
+	switch (grp_sel) {
+	case GRP_SELECT_0:
+		val = 0x01;
+		reg_addr = AD3532R_REG_ADDR_MUX_OUT_GROUP_SELECT;
+		break;
+
+	case GRP_SELECT_1:
+		val = 0x03;
+		reg_addr =
+			AD3532R_REG_ADDR_MUX_OUT_GROUP_SELECT_SET2;
+		break;
+
+	default:
+		return -EINVAL;
+	}
+
+	return ad3530r_spi_write_mask(desc, reg_addr,
+				      AD3532R_MASK_MUX_GRP_SELECT, val);
+
 }
 
 /**
@@ -899,7 +980,6 @@ int ad3530r_set_multidac_value(struct ad3530r_desc *desc,
 int ad3530r_sw_ldac_trigger(struct ad3530r_desc *desc)
 {
 	int ret;
-	uint32_t reg_addr;
 	uint8_t i;
 
 	if (!desc)
@@ -1060,9 +1140,11 @@ int ad3530r_device_config(struct ad3530r_desc *desc,
 			return ret;
 	}
 
-	ret = ad3530r_set_output_range(desc, dev_param->range);
-	if (ret)
-		return ret;
+	for (i = 0; i < num_of_reg_sets; i++) {
+		ret = ad3530r_set_output_range(desc, dev_param->range, i);
+		if (ret)
+			return ret;
+	}
 
 	ret = ad3530r_set_hw_ldac(desc, dev_param->hw_ldac_mask);
 	if (ret)
@@ -1130,7 +1212,12 @@ int ad3530r_init(struct ad3530r_desc **desc,
 		}
 	}
 
-	if (init_param->chip_id == AD3531R_ID) {
+	if (init_param->chip_id == AD3532R_ID) {
+		num_of_reg_sets = 2;
+		num_of_chans = AD3532R_NUM_CH;
+		reg_offset[0] = AD3532R_ID_SET_1_OFFSET;
+		reg_offset[1] = AD3532R_ID_SET_2_OFFSET;
+	} else if (init_param->chip_id == AD3531R_ID) {
 		num_of_chans = AD3531R_NUM_CH;
 	}
 
